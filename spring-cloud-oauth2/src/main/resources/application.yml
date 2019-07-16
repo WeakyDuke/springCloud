@@ -1,0 +1,12 @@
+server:
+ port: 1311
+
+spring:
+ application:
+  name: spring-cloud-oauth2
+
+eureka:
+ client:
+  serviceUrl:
+   defaultZone:  http://localhost:1111/eureka/
+
