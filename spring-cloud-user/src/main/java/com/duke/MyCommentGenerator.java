@@ -24,6 +24,7 @@ import org.mybatis.generator.config.PropertyRegistry;
  * @Date: Created in 11:49 PM 2019/7/17
  * @Modified By:
  */
+@SuppressWarnings("AlibabaUndefineMagicConstant")
 public class MyCommentGenerator implements CommentGenerator {
     private Properties properties;
     private Properties systemPro;
@@ -40,6 +41,7 @@ public class MyCommentGenerator implements CommentGenerator {
         nowTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
     }
 
+    @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
         if (suppressAllComments) {
             return;
@@ -51,15 +53,18 @@ public class MyCommentGenerator implements CommentGenerator {
      * Adds a suitable comment to warn users that the element was generated, and
      * when it was generated.
      */
+    @Override
     public void addComment(XmlElement xmlElement) {
         return;
     }
 
+    @Override
     public void addRootComment(XmlElement rootElement) {
         // add no document level comments by default
         return;
     }
 
+    @Override
     public void addConfigurationProperties(Properties properties) {
         this.properties.putAll(properties);
         suppressDate = isTrue(properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE));
@@ -72,6 +77,7 @@ public class MyCommentGenerator implements CommentGenerator {
      * @param property
      * @return
      */
+    @SuppressWarnings("AlibabaUndefineMagicConstant")
     private boolean isTrue(String property) {
         if ("true".equals(property)) {
             return true;
@@ -118,6 +124,7 @@ public class MyCommentGenerator implements CommentGenerator {
         return result;
     }
 
+    @Override
     public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
@@ -132,6 +139,7 @@ public class MyCommentGenerator implements CommentGenerator {
         innerClass.addJavaDocLine(" */");
     }
 
+    @Override
     public void addEnumComment(InnerEnum innerEnum, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
@@ -147,6 +155,7 @@ public class MyCommentGenerator implements CommentGenerator {
     /**
      * 设置字段注释
      */
+    @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         if (suppressAllComments) {
             return;
@@ -159,6 +168,7 @@ public class MyCommentGenerator implements CommentGenerator {
         field.addJavaDocLine(" */");
     }
 
+    @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
@@ -171,6 +181,7 @@ public class MyCommentGenerator implements CommentGenerator {
         field.addJavaDocLine(" */");
     }
 
+    @Override
     public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
             return;
@@ -183,6 +194,7 @@ public class MyCommentGenerator implements CommentGenerator {
     /**
      * 设置getter方法注释
      */
+    @Override
     public void addGetterComment(Method method, IntrospectedTable introspectedTable,
                                  IntrospectedColumn introspectedColumn) {
         if (suppressAllComments) {
@@ -219,6 +231,7 @@ public class MyCommentGenerator implements CommentGenerator {
     /**
      * 设置setter方法注释
      */
+    @Override
     public void addSetterComment(Method method, IntrospectedTable introspectedTable,
                                  IntrospectedColumn introspectedColumn) {
         if (suppressAllComments) {
@@ -253,6 +266,7 @@ public class MyCommentGenerator implements CommentGenerator {
         method.addJavaDocLine(" */");
     }
 
+    @Override
     public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
         if (suppressAllComments) {
             return;

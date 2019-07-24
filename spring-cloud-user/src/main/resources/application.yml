@@ -4,9 +4,19 @@ server:
 spring:
  application:
   name: spring-cloud-user
+ profiles:
+   active: local
 
 eureka:
  client:
   serviceUrl:
    defaultZone:  http://localhost:1111/eureka/
+
+mybatis:
+  #实体类的包
+  type-aliases-package: com.duke.user.*.model
+  #mapper.xml存放的路径
+  mapperLocations: classpath:mapping/*.xml
+  #mybatis配置文件存放的路径
+  configLocation: classpath:mybatis-config.xml
 
