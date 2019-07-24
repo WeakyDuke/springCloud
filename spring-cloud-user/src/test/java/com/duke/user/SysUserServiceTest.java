@@ -40,7 +40,7 @@ public class SysUserServiceTest extends UserApplicationTest {
         record.setPassword("123456");
         record.setName("江南制造总局");
         int result = sysUserService.insert(record);
-        logger.info("insert record : " + JSON.toJSONString(record) + ", result: " + result);
+        logger.warn("insert record : " + JSON.toJSONString(record) + ", result: " + result);
     }
 
     @Test
@@ -50,13 +50,13 @@ public class SysUserServiceTest extends UserApplicationTest {
         record.setPassword("123456");
         record.setName("江南制造总局");
         int result = sysUserService.insertSelective(record);
-        logger.info("insert record : " + JSON.toJSONString(record) + ", result: " + result);
+        logger.warn("insert record : " + JSON.toJSONString(record) + ", result: " + result);
     }
 
     @Test
     public void selectByPrimaryKey() {
         SysUser record = sysUserService.selectByPrimaryKey(1);
-        logger.info("selectByPrimaryKey record : " + JSON.toJSONString(record));
+        logger.warn("selectByPrimaryKey record : " + JSON.toJSONString(record));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class SysUserServiceTest extends UserApplicationTest {
         record.setPassword("123456");
         record.setName("江南制造总局-test");
         int result = sysUserService.updateByPrimaryKeySelective(record);
-        logger.info("updateByPrimaryKeySelective record : " + JSON.toJSONString(sysUserService.selectByPrimaryKey(6)) + ", result: " + result);
+        logger.warn("updateByPrimaryKeySelective record : " + JSON.toJSONString(sysUserService.selectByPrimaryKey(6)) + ", result: " + result);
     }
 
     @Test
@@ -77,6 +77,6 @@ public class SysUserServiceTest extends UserApplicationTest {
         record.setUname("duke2-test");
         record.setPassword("123456");
         int result = sysUserService.updateByPrimaryKey(record);
-        logger.info("updateByPrimaryKey record : " + JSON.toJSONString(sysUserService.selectByPrimaryKey(7)) + ", result: " + result);
+        logger.warn("updateByPrimaryKey record : " + JSON.toJSONString(sysUserService.selectByPrimaryKey(7)) + ", result: " + result);
     }
 }
