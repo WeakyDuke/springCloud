@@ -9,6 +9,7 @@ import com.duke.annotation.PassToken;
 import com.duke.annotation.UserLoginToken;
 import com.duke.user.sysuser.model.SysUser;
 import com.duke.user.sysuser.service.SysUserService;
+import com.duke.utils.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                     throw new RuntimeException("无token，请重新登录");
                 }
                 // 获取 token 中的 user id
-                String userId;
+                /*String userId;
                 try {
                     userId = JWT.decode(token).getAudience().get(0);
                 } catch (JWTDecodeException j) {
@@ -79,7 +80,20 @@ public class AuthInterceptor implements HandlerInterceptor {
                 } catch (JWTVerificationException e) {
                     throw new RuntimeException("401");
                 }
-                return true;
+                return true;*/
+
+                //
+                String uname = TokenUtil.getUserNameByToken(request);
+                // 这边拿到的 用户名 应该去数据库查询获得密码，简略，步骤在service直接获取密码
+                SysUser userDB = sysUserService.selectByUname(uname);
+                if (userDB == null){
+                    throw new RuntimeException("用户不存在，请重新登录");
+                }
+                boolean result = TokenUtil.verify(token,uname,userDB.getPassword());
+                if(result){
+                    System.out.println("通过拦截器");
+                    return true;
+                }
             }
         }
         return true;

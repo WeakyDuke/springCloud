@@ -30,18 +30,42 @@ public class SysUserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public Object login(@RequestParam(name = "id") Integer userId, @RequestParam(name = "password") String password){
-        SysUser userDB = sysUserService.selectByPrimaryKey(userId);
+    public Object login(@RequestBody SysUser user){
+        SysUser userDB = sysUserService.selectByPrimaryKey(user.getId());
         if (userDB == null){
             throw new RuntimeException("用户不存在，请重新登录");
         }
-        if (!userDB.getPassword().equals(password)){
+        if (!userDB.getPassword().equals(user.getPassword())){
             throw new RuntimeException("密码错误，请重新登录");
         }
         String token = TokenUtil.getToken(userDB);
         Map map = new HashMap();
         map.put("user", userDB);
         map.put("token", token);
+        return map;
+    }
+
+    @PostMapping("/login2")
+    @ResponseBody
+    public Object login2(@RequestBody SysUser user){
+        SysUser userDB = sysUserService.selectByUname(user.getUname());
+        if (userDB == null){
+            throw new RuntimeException("用户不存在，请重新登录");
+        }
+        if (!userDB.getPassword().equals(user.getPassword())){
+            throw new RuntimeException("密码错误，请重新登录");
+        }
+        // 实际应该传密钥而不是密码
+        String token = TokenUtil.sign(user.getUname(), user.getPassword());
+        Map map = new HashMap();
+        if (token != null){
+            map.put("code", "200");
+            map.put("message","认证成功");
+            map.put("token", token);
+            return map;
+        }
+        map.put("code", "403");
+        map.put("message","认证失败");
         return map;
     }
 

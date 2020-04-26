@@ -47,4 +47,9 @@ public class SysUserServiceImpl implements SysUserService {
     public int updateByPrimaryKey(SysUser record) {
         return sysUserMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public SysUser selectByUname(String uname) {
+        return sysUserMapper.selectByUname(uname);
+    }
 }
