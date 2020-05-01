@@ -1,0 +1,12 @@
+server:
+  port: 1411
+
+spring:
+  application:
+    name: spring-cloud-consumer-ribbon
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:  http:peer2:1112//eureka/,http://peer1:1113//eureka/
+

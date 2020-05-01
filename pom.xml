@@ -12,6 +12,7 @@
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-oauth2</module>
         <module>spring-cloud-user</module>
+        <module>spring-cloud-ribbon-consumer</module>
     </modules>
     <!--这里的packaging为pom。所有带有子模块的项目的packaging都为pom。-->
     <!--packaging如果不进行配置，它的默认值是jar，代表Maven会将项目打成一个jar包-->
