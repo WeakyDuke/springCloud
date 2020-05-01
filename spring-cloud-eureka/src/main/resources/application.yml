@@ -1,13 +1,13 @@
 server:
- port: 1111
+ port: 1112
 
 eureka:
  instance:
   hostname: localhost
 
  client:
-  register-with-eureka: false #通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
-  fetch-registry: false
+  #register-with-eureka: false #通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
+  #fetch-registry: false #不需要检索服务
   serviceUrl:
    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
