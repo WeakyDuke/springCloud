@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class JavaClientGenerator {
     public static void main(String[] args) throws Exception {
-        /*List<String> warnings = new ArrayList<String>();
+        List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         ClassPathResource classPathResource = new ClassPathResource("generatorConfig.xml");
         File configFile = classPathResource.getFile();
@@ -27,6 +27,6 @@ public class JavaClientGenerator {
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
-        System.out.println("success");*/
+        System.out.println("success");
     }
 }
