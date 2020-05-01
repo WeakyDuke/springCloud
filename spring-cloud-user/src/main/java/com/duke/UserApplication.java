@@ -8,12 +8,6 @@ import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfigura
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * @author duke
- * @version 1.0
- * @Description user 服务启动类
- * @date 2019/7/16 12:00
- */
-/**
  * 注册到Eureka注册中心
  * 扫描mapper文件路径
  * 启用Spring应用程序上下文的自动配置，尝试猜测和配置您可能需要的bean

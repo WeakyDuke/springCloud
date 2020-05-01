@@ -4,7 +4,9 @@ server:
 eureka:
  instance:
   hostname: localhost
+  #prefer-ip-address: true #不使用主机名使用IP来定义注册中心的地址
 
+ #eureka.server.enable-self-preservation=false
  client:
   #register-with-eureka: false #通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
   #fetch-registry: false #不需要检索服务
