@@ -71,7 +71,7 @@ public class SysUserController {
 
     @GetMapping(value = "/{id}")
     @ResponseBody
-    @UserLoginToken
+    //@UserLoginToken
     public SysUser serchSysUsers(@PathVariable(value = "id", required = true) Integer id){
         return sysUserService.selectByPrimaryKey(id);
     }
